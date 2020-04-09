@@ -6,15 +6,17 @@ import {
 
 import { ReactComponent as HomeIcon } from 'assets/home.svg';
 import { ReactComponent as InboxIcon } from 'assets/inbox.svg';
+import { useTranslation } from 'react-i18next';
 
 const Tab = () => {
+  const [_] = useTranslation();
   const location = useLocation();
   const links = [
-    { url: '/stores/1/company', label: 'Home', image: <HomeIcon /> },
-    { url: '/order-view', label: 'Order', image: <InboxIcon /> }
+    { url: '/stores/1/company', label: _('Home'), image: <HomeIcon /> },
+    { url: '/order-view', label: _('Order'), image: <InboxIcon /> }
   ];
 
-  const handleFocusClass = (arg) => 
+  const handleFocusClass = (arg) =>
     location.pathname === arg ? 'Tab-button-active' : '';
 
   return(

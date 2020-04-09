@@ -3,9 +3,11 @@ import PhotoSelector from '../components/PhotoSelector/PhotoSelector'
 import { businessImages, bakeryImages } from '../shared/businessImages'
 
 import './PhotoSelect.scss'
+import { useTranslation } from 'react-i18next';
 
 const PhotoSelect = () => {
-  const googleBusiness = false
+  const [_] = useTranslation();
+  const googleBusiness = false;
 
   const getImages = () => {
     // here we make an api call to get images from the google business account.
@@ -17,8 +19,8 @@ const PhotoSelect = () => {
   return (
     <div className="PhotoSelect">
       <div className="Intro">
-        <h1>Choose a photo</h1>
-        <p>Choose a profile picture to represent your business on the first impression.</p>
+        <h1>{_('Choose a photo')}</h1>
+        <p>{_('Choose a profile picture to represent your business on the first impression.')}</p>
       </div>
 
       <PhotoSelector images={getImages()} />

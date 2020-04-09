@@ -7,6 +7,7 @@ import Footer from '../components/Footer/Footer';
 
 import businessImage from "../assets/business.jpg";
 import chevronDown from '../assets/chevron-down.svg';
+import { useTranslation } from 'react-i18next';
 
 
 const CompanyPage = () => {

@@ -3,8 +3,10 @@ import Button from '../Button/Button'
 import checkmark from '../../assets/checkmark.svg'
 
 import './PhotoSelector.scss'
+import { useTranslation } from 'react-i18next';
 
 const PhotoSelector = ({ images }) => {
+  const [_] = useTranslation();
   const [selectedPhoto, setSelectedPhoto] = useState(false)
 
   return (
@@ -38,7 +40,7 @@ const PhotoSelector = ({ images }) => {
         `}
       >
         {/* TODO: add upload image */}
-        <Button to="/" label="Next →" />
+        <Button to="/" label={`${_('Next')}  →`} />
       </div>
     </div>
   )

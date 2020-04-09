@@ -6,6 +6,7 @@ import Button from "../components/Button/Button";
 import OrderTable from "../components/OrderTable/OrderTable";
 import Form from "../components/Form/Form";
 import Fields from "../components/Fields/Fields";
+import { useTranslation } from 'react-i18next';
 
 
 const orderTable = {name: 'Tina Mayer', street: 'Hauptstraße 45', zipcity: '78464 Konstanz', products: [
@@ -14,6 +15,7 @@ const orderTable = {name: 'Tina Mayer', street: 'Hauptstraße 45', zipcity: '784
   ]};
 
 const OrderForm = (props) => {
+  const [_] = useTranslation();
   const [formInput, setFormInput] = useState({});
   const match = props.match;
   const step = match.params.step;
@@ -25,9 +27,9 @@ const OrderForm = (props) => {
   const steps = [
     {
       head: (<>
-        <h1>Contact Details</h1>
-        <p>Thank You for your support. You are a big help in fighting against
-          this crisis. Follow the steps below to finish your order.</p>
+        <h1>{_('Contact Details')}</h1>
+        <p>{_(`Thank You for your support. You are a big help in fighting against
+          this crisis. Follow the steps below to finish your order.`)}</p>
       </>),
       footer: <Button label="Next" to={'/order/1'}/>,
       stepperProps: {count: 3, activeIndex: 1},
@@ -42,29 +44,29 @@ const OrderForm = (props) => {
     },
     {
       head: (<>
-        <h1>Pay with Paypal</h1>
-        <p>Click on the button below to proceed with PayPal.</p>
+        <h1>{_('Pay with Paypal')}</h1>
+        <p>{_('Click on the button below to proceed with PayPal.')}</p>
       </>),
       stepperProps: {count: 3, activeIndex: 2},
-      footer: <Button label="Pay with Paypal" type="pay" to={'/order/2'}/>,
+      footer: <Button label={_('Pay with Paypal')} type="pay" to={'/order/2'}/>,
     },
     {
       head: (<>
-        <h1>Order Overview</h1>
-        <p>Please give your order a final check.</p>
+        <h1>{_('Order Overview')}</h1>
+        <p>{_('Please give your order a final check.')}</p>
       </>),
       body: <OrderTable {...orderTable}/>,
       stepperProps: {count: 3, activeIndex: 3},
-      footer: <Button label="Buy now" type="confirm" to={'/order/3'}/>,
+      footer: <Button label={_('Buy now')} type="confirm" to={'/order/3'}/>,
     },
     {
       body: <>
         <img src={gift} alt="Gift"/>
         <h1>Yippey!</h1>
-        <p>Thank you for your support.<br />
+        <p>{_(`Thank you for your support.<br />
           You will be notified via Email when
-          your package is on the way.</p></>,
-      footer: <Button label="Find More Local Shops" secondary to={'/map'}/>,
+          your package is on the way.`)}</p></>,
+      footer: <Button label={_('Find More Local Shops')} secondary to={'/map'}/>,
     },
   ];
 

@@ -4,6 +4,7 @@ import mapStyles from '../../shared/mapStyles.json'
 import banner from '../../assets/info_banner.png'
 import marker from '../../assets/marker.svg'
 import Button from '../Button/Button';
+import { useTranslation } from 'react-i18next';
 
 const center = {
   lat: 47.672010,
@@ -21,13 +22,14 @@ const shop = {
 }
 
 const Map = () => {
+  const [_] = useTranslation();
   const [showInfo, setShowInfo] = useState(false)
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCHTt_h9Drz0TcymU_qmYQWI2zvnsQkkQc"
   })
 
   if (loadError) {
-    return <div>Map cannot be loaded right now, sorry.</div>
+    return <div>{_('Map cannot be loaded right now, sorry.')}</div>
   }
 
   const mapJsx = <GoogleMap
@@ -72,7 +74,7 @@ const Map = () => {
         <div className="Map-info">
           <h2>Manfred's Bakery</h2>
           <p>Only the finest, hand sorted ingredients</p>
-          <Button to="/stores/1" label="Show Products & Info"/>
+          <Button to="/stores/1" label={_('Show Products & Info')}/>
         </div>
       </div>
     </OverlayView>
