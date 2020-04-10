@@ -7,19 +7,19 @@ import './Home.scss';
 import { useTranslation } from 'react-i18next';
 
 const Home = () => {
-  const [_] = useTranslation();
+  const [t] = useTranslation('home');
   return (
     <ViewWrappers.View>
       <ViewWrappers.ViewSplitter small>
         <div className="Home">
           <div className="Intro">
-            <h1>{_('Support your favourite local store online.')}</h1>
-            <p>{_('Covexit enables small businesses to create an easy-to-use online shop to be able to master the corona crisis.')}</p>
+            <h1>{t('head')}</h1>
+            <p>{t('text')}</p>
           </div>
 
           <div className="Btn-group">
-            <Button to="/stores" label={_('Search for shops nearby!')} />
-            <Button to="/stores/new" label={_('Register your business')} secondary />
+            <Button to="/stores" label={t('searchButton')} />
+            <Button to="/stores/new" label={t('registerButton')} secondary />
           </div>
         </div>
       </ViewWrappers.ViewSplitter>

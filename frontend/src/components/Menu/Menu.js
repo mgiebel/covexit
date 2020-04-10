@@ -6,17 +6,16 @@ import { useTranslation } from 'react-i18next';
 
 function Menu() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [_] = useTranslation();
+  const [t] = useTranslation('menu');
 
   const links = [
-    { to: '/map', label: _('Map test') },
-    { to: '/order/0', label: _('Order test') },
-    { to: '/stores/1', label: _('Store test') },
-    { to: '/stores/1/company', label: _('Company test') },
-    { to: '/stores/1/onboarding/0', label: _('Onboarding test') },
-    { to: 'https://covexit.webflow.io/', label: _('How it works'), external: true },
-    { to: '/imprint', label: _('Imprint'), meta: true },
-    { to: '/privacy', label: _('Privacy'), meta: true },
+    { to: '/order/0', label: t('order') },
+    { to: '/stores/1', label: t('store') },
+    { to: '/stores/1/company', label: t('company') },
+    { to: '/stores/1/onboarding/0', label: t('onboarding') },
+    { to: 'https://covexit.webflow.io/', label: t('howItWorks'), external: true },
+    { to: '/imprint', label: t('imprint'), meta: true },
+    { to: '/privacy', label: t('privacy'), meta: true },
   ];
 
   return (

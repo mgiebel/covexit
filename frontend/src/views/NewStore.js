@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 
 
 const NewStore = (props) => {
-  const [_] = useTranslation();
+  const [t] = useTranslation('new-store');
   const match = props.match;
 
   const [business, setBusiness] = useState({
@@ -38,14 +38,13 @@ const NewStore = (props) => {
         <Route path={match.path}>
           <Form
             head={<>
-              <h1>{_('Awesome decision!')}</h1>
-              <p>{_(`We’ll guide you through the process so you have it as easy as
-                possible to bring your business online.`)}</p>
+              <h1>{t('head')}</h1>
+              <p>{t('text')}</p>
             </>}
             footer={<>
               <div className="Btn-group">
-                <Button label={_('Register with google')} to={{ pathname: `${match.path}/owner`, state: { useGoogle: true } }}/>
-                <Button label={_('Register by email')} to={{ pathname: `${match.path}/owner`, state: { useGoogle: false } }} secondary/>
+                <Button label={t('signUpGoogle')} to={{ pathname: `${match.path}/owner`, state: { useGoogle: true } }}/>
+                <Button label={t('signUpManually')} to={{ pathname: `${match.path}/owner`, state: { useGoogle: false } }} secondary/>
               </div>
             </>}
           />

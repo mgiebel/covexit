@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 const products = ['bread', 'teas', 'oils', 'pots'];
 
 const ProductList = ({ type, editorView }) => {
-  const [_] = useTranslation();
+  const [t] = useTranslation('product-list');
   const [currentProduct, setCurrentProduct] = useState('bread');
   const prices = [5.60, 3.45, 3.45, 3.45, 3.45];
   const variants = bakeryImages
@@ -19,12 +19,12 @@ const ProductList = ({ type, editorView }) => {
 
   return (
     <section className="Product-list">
-      <h2 className="Product-heading high-emphasis">{_('Products')}</h2>
+      <h2 className="Product-heading high-emphasis">{t('head')}</h2>
 
      {editorView &&
       <section className="Store-actions product-actions-group product-border-padding-top--0">
-        <Button to="/store" label={_('Manage product')} secondary type="group" />
-        <Button to="/store" label={_('Add new product')} secondary type="group" />
+        <Button to="/store" label={t('manageProduct')} secondary type="group" />
+        <Button to="/store" label={t('addProduct')} secondary type="group" />
       </section>
       }
 

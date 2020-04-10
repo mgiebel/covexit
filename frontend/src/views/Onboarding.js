@@ -8,7 +8,7 @@ import Fields from "../components/Fields/Fields";
 import { useTranslation } from 'react-i18next';
 
 const Onboarding = (props) => {
-  const [_] = useTranslation();
+  const [t] = useTranslation('onboarding');
   const match = props.match;
   const step = match.params.step;
 
@@ -23,13 +23,12 @@ const Onboarding = (props) => {
   const steps = [
     {
       head: (<>
-        <h1>{_('Create a category')}</h1>
-        <p>{_(`First, let’s help your customers find the products they’re searching
-          for by creating a category.`)}</p>
+        <h1>{t('categories.head')}</h1>
+        <p>{t('categories.text')}</p>
       </>),
       footer: categoriesAreSet &&
-        <Button label={_('Next')} to={'/stores/1/onboarding/1'}/>,
-      body: <InlineInputs addLabel={_('Add category')} values={categories}
+        <Button label={t('categories.button')} to={'/stores/1/onboarding/1'}/>,
+      body: <InlineInputs addLabel={t('categories.label')} values={categories}
                           onAdd={() => setCategories([...categories, ""])}
                           onChange={(val, i) => setCategories(prev => {
                             prev[i] = val;
@@ -38,19 +37,17 @@ const Onboarding = (props) => {
     },
     {
       head: (<>
-        <h1>{_('Finally, your first product!')}</h1>
-        <p>{_(`You are close to getting your store online! Just one last step is
-          needed. To create your first online product.`)}</p>
+        <h1>{t('product.head')}</h1>
+        <p>{t('product.text')}</p>
       </>),
-      footer: <Button label="Add Product" to={'/stores/1'}/>,
+      footer: <Button label={t('product.button')} to={'/stores/1'}/>,
       body: <>
-        <Fields.TextInput onChange={onChange} placeholder={_('Name of the product')} name="name" value={product.name}/>
-        <Fields.TextInput onChange={onChange} placeholder={_('Category')} name="category" value={product.category}/>
-        <Fields.TextInput onChange={onChange} placeholder={_('Price')} name="price" value={product.price}/>
-        <Fields.TextInput onChange={onChange} placeholder={_('Phone number')} name="phone" value={product.phone}/>
-        <Fields.TextArea onChange={onChange} placeholder={_('Description of your product')} name="description" value={product.description}/>
-        <Fields.FileUpload onChange={onChange} label="Upload photo" name="photo" value={product.photo}
-                           helpText={_('JPEG .JPG .PNG (Just these file formats will work)')}/>
+        <Fields.TextInput onChange={onChange} placeholder={t('product.name')} name="name" value={product.name}/>
+        <Fields.TextInput onChange={onChange} placeholder={t('product.category')} name="category" value={product.category}/>
+        <Fields.TextInput onChange={onChange} placeholder={t('product.price')} name="price" value={product.price}/>
+        <Fields.TextArea onChange={onChange} placeholder={t('product.description')} name="description" value={product.description}/>
+        <Fields.FileUpload onChange={onChange} label={t('product.photo')} name="photo" value={product.photo}
+                           helpText={t('product.photoHelp)')}/>
       </>,
     },
   ];

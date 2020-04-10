@@ -6,7 +6,7 @@ import './PhotoSelect.scss'
 import { useTranslation } from 'react-i18next';
 
 const PhotoSelect = () => {
-  const [_] = useTranslation();
+  const [t] = useTranslation('photo-select');
   const googleBusiness = false;
 
   const getImages = () => {
@@ -19,8 +19,8 @@ const PhotoSelect = () => {
   return (
     <div className="PhotoSelect">
       <div className="Intro">
-        <h1>{_('Choose a photo')}</h1>
-        <p>{_('Choose a profile picture to represent your business on the first impression.')}</p>
+        <h1>{t('head')}</h1>
+        <p>{t('text')}</p>
       </div>
 
       <PhotoSelector images={getImages()} />

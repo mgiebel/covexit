@@ -9,11 +9,11 @@ import { ReactComponent as InboxIcon } from 'assets/inbox.svg';
 import { useTranslation } from 'react-i18next';
 
 const Tab = () => {
-  const [_] = useTranslation();
+  const [t] = useTranslation('owner-tabs');
   const location = useLocation();
   const links = [
-    { url: '/stores/1/company', label: _('Home'), image: <HomeIcon /> },
-    { url: '/order-view', label: _('Order'), image: <InboxIcon /> }
+    { url: '/stores/1/company', label: t('home'), image: <HomeIcon /> },
+    { url: '/order-view', label: t('order'), image: <InboxIcon /> }
   ];
 
   const handleFocusClass = (arg) =>

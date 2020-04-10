@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 
 const Store = () => {
-  const [_] = useTranslation();
+  const [t] = useTranslation('store-detail');
   const [showMore, requestMore] = useState(false);
 
   return (
@@ -22,18 +22,18 @@ const Store = () => {
       <article className="Store-Details">
         <h1 className="high-emphasis h4 text-capitalize">Manfred's bakery</h1>
         <p className="Store-Detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, perferendis harum! Incidunt hic corrupti dolores ex vel veniam explicabo corporis quis harum molestiae totam earum magni architecto, dolore quo qui deserunt! Excepturi veritatis sed voluptate. Officiis fuga molestias iusto earum numquam labore eius nihil totam facere non, quas voluptas ab asperiores soluta quos odit qui, quidem adipisci aspernatur? Ea repellat error fuga doloremque vitae a, nisi quod ipsa labore officiis veniam illum magni minus ad numquam quos quas sint molestiae ducimus? Est quibusdam corporis officia iure tempora illo, maxime minus odit,ullam quod dolor magni earum ipsam quasi beatae hic.</p>
-        {!showMore && <p onClick={() => requestMore(true)} className="show-more-detail">{_('Show me more info')} <img src={chevronDown} alt="chevronDown" className="left-spacing" /></p>}
+        {!showMore && <p onClick={() => requestMore(true)} className="show-more-detail">{t('showMore')} <img src={chevronDown} alt="chevronDown" className="left-spacing" /></p>}
         {showMore &&
         <Fragment>
           <p className="Store-Detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, perferendis harum! Incidunt hic corrupti dolores ex vel veniam explicabo corporis quis harum molestiae totam earum magni architecto, dolore quo qui deserunt! Excepturi veritatis sed voluptate. Officiis fuga molestias iusto earum numquam labore eius nihil totam facere non, quas voluptas ab asperiores soluta quos odit qui, quidem adipisci aspernatur? Ea repellat error fuga doloremque vitae a, nisi quod ipsa labore officiis veniam illum magni minus ad numquam quos quas sint molestiae ducimus? Est quibusdam corporis officia iure tempora illo, maxime minus odit,ullam quod dolor magni earum ipsam quasi beatae hic.</p>
-          <p onClick={() => requestMore(false)} className="show-more-detail">{_('Show me less info')} <img src={chevronDown} alt="chevronDown" className="rotate-up" /></p>
+          <p onClick={() => requestMore(false)} className="show-more-detail">{t('showLess')} <img src={chevronDown} alt="chevronDown" className="rotate-up" /></p>
         </Fragment>
         }
       </article>
     </section>
 
     <section className="Store-actions">
-      <Button to="/store" label={_('Make a call')} secondary />
+      <Button to="/store" label={t('callButton')} secondary />
     </section>
 
     <ProductList type="add" />

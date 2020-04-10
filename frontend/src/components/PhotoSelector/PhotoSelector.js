@@ -6,7 +6,7 @@ import './PhotoSelector.scss'
 import { useTranslation } from 'react-i18next';
 
 const PhotoSelector = ({ images }) => {
-  const [_] = useTranslation();
+  const [t] = useTranslation('owner-photo-select');
   const [selectedPhoto, setSelectedPhoto] = useState(false)
 
   return (
@@ -40,7 +40,7 @@ const PhotoSelector = ({ images }) => {
         `}
       >
         {/* TODO: add upload image */}
-        <Button to="/" label={`${_('Next')}  →`} />
+        <Button to="/" label={`${t('continueButton')}  →`} />
       </div>
     </div>
   )

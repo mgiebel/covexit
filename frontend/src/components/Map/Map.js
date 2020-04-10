@@ -22,14 +22,14 @@ const shop = {
 }
 
 const Map = () => {
-  const [_] = useTranslation();
+  const [t] = useTranslation();
   const [showInfo, setShowInfo] = useState(false)
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCHTt_h9Drz0TcymU_qmYQWI2zvnsQkkQc"
   })
 
   if (loadError) {
-    return <div>{_('Map cannot be loaded right now, sorry.')}</div>
+    return <div>{t('cantLoadMap')}</div>
   }
 
   const mapJsx = <GoogleMap
@@ -74,7 +74,7 @@ const Map = () => {
         <div className="Map-info">
           <h2>Manfred's Bakery</h2>
           <p>Only the finest, hand sorted ingredients</p>
-          <Button to="/stores/1" label={_('Show Products & Info')}/>
+          <Button to="/stores/1" label={t('goToStoreButton')}/>
         </div>
       </div>
     </OverlayView>

@@ -12,7 +12,7 @@ const getItemFromAddress = (wantedType, haystack) => {
 };
 
 const BusinessForm = ({ location, business, onChange }) => {
-  const [_] = useTranslation();
+  const [t] = useTranslation('new-store-business');
   const state = !location.state ? 'init' :
     location.state.useGoogle ? 'google' : 'manual';
 
@@ -38,30 +38,23 @@ const BusinessForm = ({ location, business, onChange }) => {
   };
 
   const fields = <>
-    <Fields.TextInput onChange={emitOnChange} placeholder={_('Name of your business')} name="name" value={business.name}/>
-    <Fields.TextInput onChange={emitOnChange} placeholder={_('Opening hours')} name="hours" value={business.hours}/>
-    <Fields.TextInput onChange={emitOnChange} placeholder={_('Business Address')} name="address" value={business.address}/>
-    <Fields.TextInput onChange={emitOnChange} placeholder={_('Zip and City of your business')} name="zipcity" value={business.zipcity}/>
-    <Fields.TextInput onChange={emitOnChange} placeholder={_('Business e-mail')} name="email" value={business.email}/>
-    <Fields.TextInput onChange={emitOnChange} placeholder={_('Business Phone number')} name="phone" value={business.phone}/>
-    <Fields.TextInput onChange={emitOnChange} placeholder={_('Website (if available)')} name="website" value={business.website}/>
-    <Fields.TextArea onChange={emitOnChange} placeholder={_('Short description')} name="desc" value={business.desc}/>
+    <Fields.TextInput onChange={emitOnChange} placeholder={t('name')} name="name" value={business.name}/>
+    <Fields.TextInput onChange={emitOnChange} placeholder={t('address')} name="address" value={business.address}/>
+    <Fields.TextInput onChange={emitOnChange} placeholder={t('zipAndCity')} name="zipcity" value={business.zipcity}/>
+    <Fields.TextInput onChange={emitOnChange} placeholder={t('email')} name="email" value={business.email}/>
+    <Fields.TextInput onChange={emitOnChange} placeholder={t('phoneNumber')} name="phone" value={business.phone}/>
+    <Fields.TextInput onChange={emitOnChange} placeholder={t('website')} name="website" value={business.website}/>
+    <Fields.TextArea onChange={emitOnChange} placeholder={t('description')} name="desc" value={business.desc}/>
   </>;
 
   const formProps = {
     head: {
-      init: <><h1>{_('Lets talk business!')}</h1><p>{_(`Next we want to know about your
-        business. Do you want to enter it manually or import from Google Maps?
-        Don't worry, you can still change it after importing.`)}</p></>,
-      google: business.mapsPlaceObject ? <><h1>{_('Got them! Wanna change?')}</h1>
-          <p>{_(`We’ve got all the info from your Google Business page. In case you
-            want to change something – just do it.`)}</p></>
+      init: <><h1>{t('intro.head')}</h1><p>{t('intro.text')}</p></>,
+      google: business.mapsPlaceObject ? <><h1>{t('googleConfirm.head')}</h1>
+          <p>{t('googleConfirm.text')}</p></>
         : // or
-        <><h1>{_('Name your business.')}</h1><p>{_(`By what name is your business known?
-          Type in a name your customers already know or sound familiar to
-          them.`)}</p></>,
-      manual: <><h1>{_('Business Info')}</h1><p>{_(`Now, let’s set up your business
-        account! For starters, please fill in the blanks below.`)}</p></>,
+        <><h1>{t('searchGoogle.head')}</h1><p>{t('searchGoogle.text')}</p></>,
+      manual: <><h1>{t('manually.head')}</h1><p>{t('manually.text')}</p></>,
     },
     body: {
       google: business.mapsPlaceObject ? fields :
@@ -70,12 +63,12 @@ const BusinessForm = ({ location, business, onChange }) => {
     },
     footer: {
       init: <div className="Btn-group">
-        <Button label={_('Get store data from Google')} onClick={() => onChange(false)}
+        <Button label={t('intro.button_google')} onClick={() => onChange(false)}
                 to={{ pathname: '/stores/new/business', state: { useGoogle: true } }}/>
-        <Button label={_('Set up manually')} to={{ pathname: '/stores/new/business', state: { useGoogle: false } }} secondary/>
+        <Button label={t('intro.button_manually')} to={{ pathname: '/stores/new/business', state: { useGoogle: false } }} secondary/>
       </div>,
-      manual: <Button label={_('Perfect, let’s go')} to="/stores/1/onboarding"/>,
-      google: <Button label={_('Perfect, let’s go')} to="/stores/1/onboarding"/>,
+      manual: <Button label={t('manually.continue')} to="/stores/1/onboarding"/>,
+      google: <Button label={t('googleConfirm.continue')} to="/stores/1/onboarding"/>,
     },
   };
 
